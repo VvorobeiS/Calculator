@@ -1,35 +1,27 @@
 'use strict';
 
-// Объявляем пременные
-let money = 55000;
-let income = 'фриланс';
-let addExpenses = 'Гсм, Спортпит, Обучение';
-let deposit = false;
-let mission = 500000;
-let period = 12;
-let budgetDay = money / 30;
-
 // Вызываем (alert)
 alert('ДЗ сдано!');
 
-// Перетираем значения объявленных переменных
-money = +prompt('Ваш месячный доход?');
-addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-deposit = confirm('Есть ли у вас депозит в банке?');
+// Объявляем пременные
+let money = (55000, +prompt('Ваш месячный доход?'));
+let income = 'фриланс';
+let addExpenses =
+  ('Гсм, Спортпит, Обучение', prompt('Перечислите возможные расходы за рассчитываемый период через запятую'));
+let deposit = (false, confirm('Есть ли у вас депозит в банке?'));
+let mission = 500000;
+let period = 12;
 let expenses1 = prompt('Введите обязательную статью раходов.');
 let amount1 = +prompt('Во сколько это обойдется?');
 let expenses2 = prompt('Введите обязательную статью раходов.');
 let amount2 = +prompt('Во сколько это обойдется?');
-
-// Объявляем-перетираем переменые
 let budgetMonth = money - (amount1 + amount2);
 let missionMonth = Math.ceil(mission / budgetMonth);
-budgetDay = Math.floor(budgetMonth / 30);
+let budgetDay = (money / 30, Math.floor(budgetMonth / 30));
 
 // Передаем данные в консоль
 console.log('ДЗ сдано!');
 console.log('Период равен', period, 'месяцев и цель заработать', mission, 'рублей.');
-console.log(budgetDay);
 console.log(money);
 console.log(addExpenses);
 console.log(deposit);
