@@ -1,14 +1,12 @@
 'use strict';
 
-// Вызываем (alert)
-alert('ДЗ сдано!');
-
 // Объявляем пременные
-let money = (55000, +prompt('Ваш месячный доход?', 55000));
+let money = +prompt('Ваш месячный доход?', 55000);
 let income = 'фриланс';
-let addExpenses =
-  ('Гсм, Спортпит, Обучение',
-  prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Одежда, спортинвертарь, отдых'));
+let addExpenses = prompt(
+  'Перечислите возможные расходы за рассчитываемый период через запятую',
+  'Одежда, спортинвертарь, отдых'
+);
 let deposit = (false, confirm('Есть ли у вас депозит в банке?'));
 let mission = 500000;
 let period = 12;
@@ -20,31 +18,27 @@ let accumulatedMonth = getAccumulatedMonth();
 let budgetDay = (money / 30, Math.floor(accumulatedMonth / 30));
 
 // Объявляем функции
-let getExpensesMonth = function () {
+const getExpensesMonth = function () {
   return amount1 + amount2;
 };
 function getAccumulatedMonth() {
   return money - amount1 - amount2;
 }
-let getTargetMonth = function () {
-  return mission / accumulatedMonth;
+const getTargetMonth = function () {
+  return Math.ceil(mission / accumulatedMonth);
 };
-let getStatusIncome = function () {
-  if (budgetDay > 1200) {
+const getStatusIncome = function () {
+  if (budgetDay >= 1200) {
     return 'У вас высокий уровень дохода';
-  } else if (budgetDay === 1200) {
-    return 'Ваш уровень дохода выше среднего';
-  } else if (budgetDay > 600) {
+  } else if (budgetDay >= 600) {
     return 'У вас средний уровень дохода';
-  } else if (budgetDay === 600) {
-    return 'Ваш уровень дохода выше низкого';
   } else if (budgetDay > 0) {
     return 'К сожалению у вас уровень низкий уровень дохода';
   } else {
     return 'Что то пошло не так';
   }
 };
-let showTypeOf = function (data) {
+const showTypeOf = function (data) {
   console.log(data, typeof data);
 };
 
