@@ -1,27 +1,27 @@
 'use strict';
 
-let btnCalculate = document.getElementById('start');
-let btnIncomeAdd = document.getElementsByTagName('button')[0];
-let btnExpensesAdd = document.getElementsByTagName('button')[1];
-let depositCheck = document.querySelector('#deposit-check');
-let inputAdditionalIncome = document.querySelectorAll('.additional_income-item');
-let valueBudgetMonth = document.getElementsByClassName('result-total')[0];
-let valueBudgetDay = document.getElementsByClassName('result-total')[1];
-let valueExpensesMonth = document.getElementsByClassName('result-total')[2];
-let valueAdditionalIncome = document.getElementsByClassName('result-total')[3];
-let valueAdditionalExpenses = document.getElementsByClassName('result-total')[4];
-let valueIncomePeriod = document.getElementsByClassName('result-total')[5];
-let valueTargetMonth = document.getElementsByClassName('result-total')[6];
-let inputSalaryAmount = document.querySelector('.salary-amount');
-let inputIncomeTitle = document.querySelector('.income-title');
-let inputIncomeAmount = document.querySelector('.income-amount');
-let inputExpensesTitle = document.querySelector('.expenses-title');
-let inputExpensesAmount = document.querySelector('.expenses-amount');
-let inputExpensesIncome = document.querySelector('.additional_expenses-item');
-let inputDepositAmount = document.querySelector('.deposit-amount');
-let inputDepositPercent = document.querySelector('.deposit-percent');
-let inputTargetAmount = document.querySelector('.target-amount');
-let inputPeriodSelect = document.querySelector('.period-select');
+const btnCalculate = document.getElementById('start');
+const btnIncomeAdd = document.getElementsByTagName('button')[0];
+const btnExpensesAdd = document.getElementsByTagName('button')[1];
+const depositCheck = document.querySelector('#deposit-check');
+const inputAdditionalIncome = document.querySelectorAll('.additional_income-item');
+const valueBudgetMonth = document.getElementsByClassName('result-total')[0];
+const valueBudgetDay = document.getElementsByClassName('result-total')[1];
+const valueExpensesMonth = document.getElementsByClassName('result-total')[2];
+const valueAdditionalIncome = document.getElementsByClassName('result-total')[3];
+const valueAdditionalExpenses = document.getElementsByClassName('result-total')[4];
+const valueIncomePeriod = document.getElementsByClassName('result-total')[5];
+const valueTargetMonth = document.getElementsByClassName('result-total')[6];
+const inputSalaryAmount = document.querySelector('.salary-amount');
+const inputIncomeTitle = document.querySelector('.income-title');
+const inputIncomeAmount = document.querySelector('.income-amount');
+const inputExpensesTitle = document.querySelector('.expenses-title');
+const inputExpensesAmount = document.querySelector('.expenses-amount');
+const inputExpensesIncome = document.querySelector('.additional_expenses-item');
+const inputDepositAmount = document.querySelector('.deposit-amount');
+const inputDepositPercent = document.querySelector('.deposit-percent');
+const inputTargetAmount = document.querySelector('.target-amount');
+const inputPeriodSelect = document.querySelector('.period-select');
 
 // Функция для проверки введеного типа данных
 const isNumber = function (n) {
