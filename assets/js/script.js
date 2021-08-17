@@ -239,7 +239,7 @@ let appData = {
   }
 };
 
-btnCalculate.disabled = true;
+btnCalculate.disabled = inputSalaryAmount.value === '';
 inputSalaryAmount.addEventListener('input', function () {
   if (inputSalaryAmount.value === '') {
     btnCalculate.disabled = true;
