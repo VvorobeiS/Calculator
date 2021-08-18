@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 const btnCalculate = document.getElementById('start');
 const btnCancel = document.getElementById('cancel');
@@ -95,38 +95,38 @@ let appData = {
     }
   },
   getExpenses: function () {
-    expensesItems.forEach(function (item) {
+    expensesItems.forEach((item) => {
       inputExpensesTitle = item.querySelector('.expenses-title').value;
       inputExpensesAmount = item.querySelector('.expenses-amount').value;
       if (inputExpensesTitle !== '' && inputExpensesAmount !== '') {
-        appData.expenses[inputExpensesTitle] = Number(inputExpensesAmount);
+        this.expenses[inputExpensesTitle] = Number(inputExpensesAmount);
       }
     });
   },
   getIncome: function () {
     // Узнаем о дополнительном заработке
-    incomeItems.forEach(function (item) {
+    incomeItems.forEach((item) => {
       inputIncomeTitle = item.querySelector('.income-title').value;
       inputIncomeAmount = item.querySelector('.income-amount').value;
       if (inputIncomeTitle !== '' && inputIncomeAmount !== '') {
-        appData.income[inputIncomeTitle] = Number(inputIncomeAmount);
+        this.income[inputIncomeTitle] = Number(inputIncomeAmount);
       }
     });
   },
   getAddExpenses: function () {
     let addExpenses = inputExpensesIncome.value.split(',');
-    addExpenses.forEach(function (item) {
+    addExpenses.forEach((item) => {
       item = item.trim();
       if (item !== '') {
-        appData.addExpenses.push(item);
+        this.addExpenses.push(item);
       }
     });
   },
   getAddIncome: function () {
-    inputAdditionalIncome.forEach(function (item) {
+    inputAdditionalIncome.forEach((item) => {
       let itemValue = item.value.trim();
       if (itemValue !== '') {
-        appData.addIncome.push(itemValue);
+        this.addIncome.push(itemValue);
       }
     });
   },
@@ -213,24 +213,14 @@ let appData = {
         item.value = '';
       }
     });
-    if (incomeItems.length === 2) {
-      incomeItems[1].remove();
-      btnIncomeAdd.style.display = 'initial';
+    for (let i = incomeItems.length - 1; i > 0; i--) {
+      incomeItems[i].remove();
     }
-    if (incomeItems.length === 3) {
-      incomeItems[1].remove();
-      incomeItems[2].remove();
-      btnIncomeAdd.style.display = 'initial';
+    for (let i = expensesItems.length - 1; i > 0; i--) {
+      expensesItems[i].remove();
     }
-    if (expensesItems.length === 2) {
-      expensesItems[1].remove();
-      btnExpensesAdd.style.display = 'initial';
-    }
-    if (expensesItems.length === 3) {
-      expensesItems[1].remove();
-      expensesItems[2].remove();
-      btnExpensesAdd.style.display = 'initial';
-    }
+    btnIncomeAdd.style.display = 'initial';
+    btnExpensesAdd.style.display = 'initial';
     depositCheck.checked = false;
     inputPeriodSelect.value = 1;
     periodAmount.textContent = inputPeriodSelect.value;
