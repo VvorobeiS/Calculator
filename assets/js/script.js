@@ -52,8 +52,6 @@ const AppData = function () {
 
 AppData.prototype.start = function () {
   this.budget = Number(inputSalaryAmount.value);
-  console.log(this.budget);
-
   this.getExpenses();
   this.getIncome();
   this.getAddExpenses();
@@ -72,6 +70,9 @@ AppData.prototype.showResult = function () {
   valueAdditionalIncome.value = this.addIncome.join(', ');
   valueTargetMonth.value = this.getTargetMonth();
   valueIncomePeriod.value = this.calcPeriodUpdate();
+  inputPeriodSelect.addEventListener('input', () => {
+    valueIncomePeriod.value = this.calcPeriodUpdate();
+  });
   inputsText = document.querySelectorAll('input[type = text]');
   inputsText.forEach(function (item) {
     if (!item.disabled) {
@@ -173,7 +174,6 @@ AppData.prototype.getRange = function () {
 
 AppData.prototype.getBudget = function () {
   // Вычисляем бюджет на месяц
-  console.log(this.expensesMonth);
   this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
 
   // Вычисляем бюджет на день
@@ -206,7 +206,8 @@ AppData.prototype.calcPeriodUpdate = function () {
   return this.calcPeriod();
 };
 
-AppData.prototype.calculatorReset = function () {
+AppData.prototype.reset = function () {
+  this.budget = 0;
   this.income = {};
   this.addIncome = [];
   this.expenses = {};
@@ -214,32 +215,37 @@ AppData.prototype.calculatorReset = function () {
   this.deposit = false;
   this.percentDeposit = 0;
   this.moneyDeposit = 0;
-  this.budget = 0;
   this.budgetDay = 0;
   this.budgetMonth = 0;
   this.expensesMonth = 0;
   this.incomeMonth = 0;
+
   inputsText.forEach(function (item) {
     if ((item.disabled = true)) {
       item.disabled = false;
     }
   });
+
   inputsValue.forEach(function (item) {
     if (!item.disabled) {
       item.disabled = true;
     }
   });
+
+  let inputs = document.querySelectorAll('input');
   inputs.forEach(function (item) {
     if (item.value !== '') {
       item.value = '';
     }
   });
+
   for (let i = incomeItems.length - 1; i > 0; i--) {
     incomeItems[i].remove();
   }
   for (let i = expensesItems.length - 1; i > 0; i--) {
     expensesItems[i].remove();
   }
+
   btnIncomeAdd.style.display = 'initial';
   btnExpensesAdd.style.display = 'initial';
   depositCheck.checked = false;
@@ -263,7 +269,7 @@ AppData.prototype.eventsListeners = function () {
     this.start();
   });
   btnCancel.addEventListener('click', () => {
-    this.calculatorReset();
+    this.reset();
   });
   btnExpensesAdd.addEventListener('click', () => {
     this.addExpensesBlock();
